@@ -1,0 +1,36 @@
+{
+  "name": "ccli",
+  "version": "1.0.0",
+  "description": "A custom CLI tool with different functionalities and utilities.",
+  "main": "./build/index.js",
+  "bin": {
+    "ccli": "./build/cli.js"
+  },
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "pkg . --output ccli"
+  },
+  "keywords": [
+    "cli",
+    "conversion",
+    "usd",
+    "argentine peso",
+    "dollar"
+  ],
+  "author": "Agustin Magliano",
+  "license": "ISC",
+  "dependencies": {
+    "@vitalets/google-translate-api": "^9.2.0",
+    "chalk": "4",
+    "cli-table": "^0.3.11",
+    "ora": "3.2",
+    "typescript": "^5.2.2",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/cli-table": "^0.3.3",
+    "@types/node": "^20.8.10",
+    "@types/yargs": "^17.0.29"
+  }
+}

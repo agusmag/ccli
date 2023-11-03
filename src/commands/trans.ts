@@ -17,8 +17,7 @@ export const builder: Builder = (yargs) =>
       list: {
         alias: 'l',
         describe: 'List all supported languages.',
-        type: 'boolean',
-        default: false
+        type: 'boolean'
       },
       from: {
         alias: 'f',
@@ -28,14 +27,12 @@ export const builder: Builder = (yargs) =>
       to: {
         alias: 't',
         describe: 'Specify the language to translate the word or phrase into.',
-        type: 'string',
-        demandOption: true
+        type: 'string'
       },
       body: {
         alias: 'b',
         describe: 'The word or phrase to translate.',
-        type: 'string',
-        demandOption: true
+        type: 'string'
       }
     })
     .example([
@@ -49,24 +46,24 @@ export const handler: Handler = async (argv) => {
     spinner: 'clock'
   });
 
-  const { list, from, to, body, json } = argv;
+  const { list, from: fromLanguage, to: toLanguage, body: bodyPayload, json } = argv;
 
   if (list) {
     spinner.start('Fetching supported languages...');
-    const { all } = await translate.languages();
     spinner.succeed();
-
     outputs.showLanguages();
     return;
   }
 
-  spinner.start('Translating...');
-  const { translatedBody } = await translate(body, {
-    from: from ? from : 'auto',
-    to: to
-  });
+  if (bodyPayload) {
+    spinner.start('Translating...');
+    const { text } = await translate(`${bodyPayload}`, {
+      from: fromLanguage ? `${fromLanguage}` : 'auto',
+      to: `${toLanguage}`
+    });
 
-  spinner.succeed();
-
-  outputs.showTranslation(translatedBody);
+    spinner.succeed();
+  
+    outputs.showTranslation(text);
+  }
 };

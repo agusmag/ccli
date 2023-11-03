@@ -114,12 +114,14 @@ languages.set('zulu', 'zu')
 function showLanguages(){
   const table = new Table({
       head: ['Language', 'Abbreviation'],
-      colWidths: [50, 25]
+      colWidths: [25, 25]
   });
 
   for (let [key, value] of languages) {
     table.push([key, value]);
   }
+
+  console.log(table.toString());
 }
 
 function showTranslation(body: string){

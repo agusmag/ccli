@@ -28,6 +28,7 @@
     "http-errors": "^2.0.0",
     "http-proxy-agent": "^7.0.0",
     "https-proxy-agent": "^7.0.2",
+    "moment-timezone": "^0.5.43",
     "node-fetch": "^3.3.2",
     "ora": "3.2",
     "typescript": "^5.2.2",

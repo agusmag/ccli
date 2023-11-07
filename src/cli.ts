@@ -7,6 +7,7 @@ import handleError from './handleError';
 yargs(hideBin(process.argv))
   // Use the commands directory to scaffold.
   .commandDir('commands')
+  .commandDir('commands/ctime')
   // Default command if none supplied - shows help.
   .command(
     '$0',

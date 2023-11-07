@@ -10,6 +10,7 @@ const handleError_1 = __importDefault(require("./handleError"));
 (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
     // Use the commands directory to scaffold.
     .commandDir('commands')
+    .commandDir('commands/ctime')
     // Default command if none supplied - shows help.
     .command('$0', 'Custom CLI Tool', () => undefined, () => {
     yargs_1.default.showHelp();

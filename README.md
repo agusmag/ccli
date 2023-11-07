@@ -47,6 +47,7 @@ TBC
 
 * CLI Tool (Entrypoint)
 * Translate API
+* Timezone Converter
 
 ## Installation
 
@@ -70,6 +71,19 @@ TBC
 ```bash
 # Translate phrase between languages
 ccli trans -f 'es' -t 'kr' -d 'Hola' 
+
+# Output
+...
+```
+
+```bash
+# Convert PST Time to ART time
+ccli ctime -f 'PST' -t 'ART' 
+
+# Output
+...
+
+ccli ct -f 'PST' -t 'ART' --specific '17:00'
 
 # Output
 ...

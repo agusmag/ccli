@@ -1,8 +1,9 @@
 
 import chalk from 'chalk';
-import { languages } from './commands/trans.outputs'
+import { languages } from './commands/trans.outputs';
+import { timezones } from './commands/ctime/ctime.outputs';
 
-function parseLanguage(language: string) {
+export function parseLanguage(language: string) {
   if(language.length == 2){
 	  return language;
   }
@@ -16,15 +17,20 @@ function parseLanguage(language: string) {
   }
 };
 
-function parseSentence(body: string) {
+export function parseTimezone(timezone: string) {  
+  if(timezones.has(timezone)){
+	  return timezones.get(timezone)
+  }
+  else {
+	  console.error(chalk.red.bold("Timezone not supported!"))
+	  return; //returning null if the language is unsupported.
+  }
+};
+
+export function parseSentence(body: string) {
     var sentence = "";
     for(var i = 1; i < body.length; i++) {
 	sentence = sentence + body[i] + " ";
     }
     return sentence;
 }
-
-module.exports = { 
-  parseLanguage,
-  parseSentence
-};

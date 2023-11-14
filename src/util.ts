@@ -1,6 +1,6 @@
 
 import chalk from 'chalk';
-import { languages } from './commands/trans.outputs';
+import { languages } from './commands/trans/trans.outputs';
 import { timezones } from './commands/ctime/ctime.outputs';
 
 export function parseLanguage(language: string) {

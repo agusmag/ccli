@@ -28,6 +28,7 @@
     "http-errors": "^2.0.0",
     "http-proxy-agent": "^7.0.0",
     "https-proxy-agent": "^7.0.2",
+    "luxon": "^3.4.3",
     "moment-timezone": "^0.5.43",
     "node-fetch": "^3.3.2",
     "ora": "3.2",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@types/cli-table": "^0.3.3",
     "@types/http-errors": "^2.0.3",
+    "@types/luxon": "^3.3.4",
     "@types/node": "^20.8.10",
     "@types/yargs": "^17.0.29"
   }

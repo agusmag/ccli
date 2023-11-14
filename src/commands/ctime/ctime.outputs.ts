@@ -195,14 +195,14 @@ function showTimezones(){
     console.log(table.toString());
 }
 
-function showConvertedTime(originTimezone: string, originDateTime: string, targetTimezones: string[], convertedDateTime: string){
+function showConvertedTime(originTimezone: string, originDateTime: string, targetTimezone: string, convertedDateTime: string){
     const table = new Table({
         head: ["From", "To"],
         colWidths: [25, 25]
     });
 
     table.push(
-        [originTimezone, targetTimezones.join(', ')],
+        [originTimezone, targetTimezone],
         [originDateTime, convertedDateTime]
     );
 

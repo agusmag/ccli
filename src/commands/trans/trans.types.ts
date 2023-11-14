@@ -1,7 +1,11 @@
 import type { Arguments, CommandBuilder } from 'yargs';
-import type { BaseOptions } from '../shared';
+import type { BaseOptions } from '../../shared';
 
-export type Options = BaseOptions;
+export type Options = BaseOptions & {
+  from: string | undefined;
+  to: string | undefined;
+  body: string | undefined;
+};
 
 export type Builder = CommandBuilder<Options, Options>;
 

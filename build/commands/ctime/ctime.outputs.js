@@ -197,12 +197,12 @@ function showTimezones() {
     console.log(table.toString());
 }
 exports.showTimezones = showTimezones;
-function showConvertedTime(originTimezone, originDateTime, targetTimezones, convertedDateTime) {
+function showConvertedTime(originTimezone, originDateTime, targetTimezone, convertedDateTime) {
     const table = new cli_table_1.default({
         head: ["From", "To"],
         colWidths: [25, 25]
     });
-    table.push([originTimezone, targetTimezones.join(', ')], [originDateTime, convertedDateTime]);
+    table.push([originTimezone, targetTimezone], [originDateTime, convertedDateTime]);
     console.log(table.toString());
 }
 exports.showConvertedTime = showConvertedTime;

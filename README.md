@@ -16,6 +16,8 @@ Custom CLI tool to help the user with different scenarios. It works as utility t
 ## Features
 
 - Translate words, phrases, or paragraphs between languages.
+- Convert date times between timezones.
+- List and Get conversion rates for the Argentine peso and the US Dollar. 
 
 ## Technology Stack
 
@@ -28,12 +30,32 @@ Custom CLI tool to help the user with different scenarios. It works as utility t
 ```yaml
 .
 ├─ src/                         # Source folder
-│  ├─ commands/
-│  │  ├─ trans.outputs.ts       # List command files
-│  │  ├─ trans.ts 
-│  │  └─ trans.types.ts   
+│  ├─ commands/                 # Commands folders
+│  │  ├─ ctime/
+│  │  │  ├─ ctime_commands/     # Sub Commands for ctime
+│  │  │  │   ├─ convert.ts
+│  │  │  │   └─ list.ts
+│  │  │  ├─ ctime.outputs.ts
+│  │  │  ├─ ctime.ts 
+│  │  │  └─ ctime.types.ts    
+│  │  ├─ trans/
+│  │  │  ├─ trans_commands/     # Sub Commands for trans
+│  │  │  │   ├─ list.ts
+│  │  │  │   └─ translate.ts           
+│  │  │  ├─ trans.outputs.ts
+│  │  │  ├─ trans.ts 
+│  │  │  └─ trans.types.ts
+│  │  └─ usd/
+│  │     ├─ usd_commands/       # Sub Commands for usd
+│  │     │   ├─ get.ts
+│  │     │   └─ list.ts             
+│  │     ├─ usd.outputs.ts
+│  │     ├─ usd.ts 
+│  │     └─ usd.types.ts  
 │  ├─ cli.ts                    # CLI Tool entrypoint
-│  └─ handleError.ts            # CLI error-handler helper
+│  ├─ handleError.ts            # CLI error-handler helper
+│  ├─ shared.ts                 # CLI shared constructors (builder, handler, options)
+│  └─ util.ts                   # CLI utility class with functions
 ├─ .gitignore                   # Configuration files                  
 ├─ package.json
 ├─ pnpm-lock.yaml
@@ -41,52 +63,98 @@ Custom CLI tool to help the user with different scenarios. It works as utility t
 └─ tsconfig.json
 ```
 
-## System Architecture
-
-TBC
-
-* CLI Tool (Entrypoint)
-* Translate API
-* Timezone Converter
-
-## Installation
-
-TBC
-
-<!--
-### Step 1
- 
-```bash
-# Installation steps, e.g., for setting up dependencies or downloading the tool
-``` -->
-
-## Configuration
-
-<!-- Explain how to configure your tool, including any environment variables or configuration files that need to be set. -->
-
-TBC
-
 ## Usage
 
-```bash
-# Translate phrase between languages
-ccli trans -f 'es' -t 'kr' -d 'Hola' 
-
-# Output
-...
-```
+### Timezone Converter
 
 ```bash
 # Convert PST Time to ART time
-ccli ctime -f 'PST' -t 'ART' 
+ccli ctime convert -f 'PST' -t 'ART' 
+
+# Output using current time
+┌─────────────────────────┬─────────────────────────┐
+│ From                    │ To                      │
+├─────────────────────────┼─────────────────────────┤
+│ PST                     │ ART                     │
+├─────────────────────────┼─────────────────────────┤
+│ 11:47                   │ 15:47                   │
+└─────────────────────────┴─────────────────────────┘
+
+
+ccli ct cv -f 'PST' -t 'ART' --specific '12:00'
 
 # Output
-...
+┌─────────────────────────┬─────────────────────────┐
+│ From                    │ To                      │
+├─────────────────────────┼─────────────────────────┤
+│ PST                     │ ART                     │
+├─────────────────────────┼─────────────────────────┤
+│ 12:00                   │ 16:00                   │
+└─────────────────────────┴─────────────────────────┘
+```
 
-ccli ct -f 'PST' -t 'ART' --specific '17:00'
+### Translator
+
+```bash
+# List supported languages
+ccli trans list 
 
 # Output
-...
+┌─────────────────────────┬─────────────────────────┐
+│ Language                │ Abbreviation            │
+├─────────────────────────┼─────────────────────────┤
+│ afrikaans               │ af                      │
+├─────────────────────────┼─────────────────────────┤
+│ albanian                │ sq                      │
+├─────────────────────────┼─────────────────────────┤
+│ amharic                 │ am                      │
+├─────────────────────────┼─────────────────────────┤
+│ arabic                  │ ar                      │
+├─────────────────────────┼─────────────────────────┤
+│ armenian                │ hy                      │
+├─────────────────────────┼─────────────────────────┤
+│ azerbaijani             │ az                      │
+├─────────────────────────┼─────────────────────────┤
+│ basque                  │ eu                      │
+├─────────────────────────┼─────────────────────────┤
+│ ...                     │ ...                     │
+└─────────────────────────┴─────────────────────────┘
+```
+
+```bash
+# Translate phrase between languages
+ccli trans translate -f 'es' -t 'ko' -d 'Hola' 
+
+# Output
+안녕하세요
+```
+
+### USD
+
+```bash
+# List all the conversion rates
+ccli usd list
+
+┌─────────────────────────┬────────────────────┬────────────────────┬─────────────────────────┐
+│ Currency                │ Buy Conversion ra… │ Sell Conversion r… │ Last update             │
+├─────────────────────────┼────────────────────┼────────────────────┼─────────────────────────┤
+│ Official                │ $348,96            │ $368,60            │ 01/11/2023 12:00:00     │
+├─────────────────────────┼────────────────────┼────────────────────┼─────────────────────────┤
+│ Blue                    │ $890               │ $910               │ 01/11/2023 12:00:00     │
+├─────────────────────────┼────────────────────┼────────────────────┼─────────────────────────┤
+│ CCL                     │ $775.23            │ $865.52            │ 01/11/2023 12:00:00     │
+└─────────────────────────┴────────────────────┴────────────────────┴─────────────────────────┘
+```
+
+```bash
+# Get specific conversion rate
+usd get 'blue' # usd g <usdType>
+
+┌─────────────────────────┬────────────────────┬────────────────────┬─────────────────────────┐
+│ Currency                │ Buy Conversion ra… │ Sell Conversion r… │ Last update             │
+├─────────────────────────┼────────────────────┼────────────────────┼─────────────────────────┤
+│ Blue                    │ $890               │ $910               │ 01/11/2023 12:00:00     │
+└─────────────────────────┴────────────────────┴────────────────────┴─────────────────────────┘
 ```
 
 ## Contributing

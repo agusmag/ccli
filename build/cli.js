@@ -7,16 +7,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const yargs_1 = __importDefault(require("yargs"));
 const helpers_1 = require("yargs/helpers");
 const handleError_1 = __importDefault(require("./handleError"));
-(0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
+var argv = (0, yargs_1.default)((0, helpers_1.hideBin)(process.argv))
     // Use the commands directory to scaffold.
-    .commandDir('commands')
     .commandDir('commands/ctime')
+    .commandDir('commands/trans')
+    .commandDir('commands/usd')
     // Default command if none supplied - shows help.
-    .command('$0', 'Custom CLI Tool', () => undefined, () => {
-    yargs_1.default.showHelp();
-})
+    .usage('usage: $0 <command>')
+    .help('help')
+    .wrap(null)
     // Enable strict mode.
-    .strict()
+    .demandCommand()
     // Useful aliases.
     .alias({ h: 'help' })
     // Be nice.

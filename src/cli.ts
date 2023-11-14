@@ -4,21 +4,17 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import handleError from './handleError';
 
-yargs(hideBin(process.argv))
+var argv = yargs(hideBin(process.argv))
   // Use the commands directory to scaffold.
-  .commandDir('commands')
   .commandDir('commands/ctime')
+  .commandDir('commands/trans')
+  .commandDir('commands/usd')
   // Default command if none supplied - shows help.
-  .command(
-    '$0',
-    'Custom CLI Tool',
-    () => undefined,
-    () => {
-      yargs.showHelp();
-    },
-  )
+  .usage('usage: $0 <command>')
+  .help('help')
+  .wrap(null)
   // Enable strict mode.
-  .strict()
+  .demandCommand()
   // Useful aliases.
   .alias({ h: 'help' })
   // Be nice.

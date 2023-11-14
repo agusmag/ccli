@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.parseSentence = exports.parseTimezone = exports.parseLanguage = void 0;
 const chalk_1 = __importDefault(require("chalk"));
-const trans_outputs_1 = require("./commands/trans.outputs");
+const trans_outputs_1 = require("./commands/trans/trans.outputs");
 const ctime_outputs_1 = require("./commands/ctime/ctime.outputs");
 function parseLanguage(language) {
     if (language.length == 2) {

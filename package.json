@@ -2,10 +2,10 @@
   "name": "ccli",
   "version": "1.0.0",
   "description": "A custom CLI tool with different functionalities and utilities.",
-  "main": "./build/index.js",
   "bin": {
-    "ccli": "./build/cli.js"
+    "ccli": "bin/src/cli.js"
   },
+  "main": "bin/src/cli.js",
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -40,6 +40,8 @@
     "@types/http-errors": "^2.0.3",
     "@types/luxon": "^3.3.4",
     "@types/node": "^20.8.10",
-    "@types/yargs": "^17.0.29"
+    "@types/yargs": "^17.0.29",
+    "cross-env": "^7.0.3",
+    "np": "^8.0.4"
   }
 }

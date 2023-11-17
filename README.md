@@ -157,6 +157,14 @@ usd get 'blue' # usd g <usdType>
 └─────────────────────────┴────────────────────┴────────────────────┴─────────────────────────┘
 ```
 
+## Installation
+
+```bash
+npm i ccli
+
+ccli --help
+```
+
 ## Contributing
 
 Agustin Magliano

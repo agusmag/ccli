@@ -9,7 +9,9 @@
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "pkg . --output ccli"
+    "package": "pkg . --output ccli",
+    "prepublishOnly": "node prepublish.js && tsc",
+    "release": "cross-env RELEASE_MODE=true np --no-tests"
   },
   "keywords": [
     "cli",

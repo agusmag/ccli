@@ -1,17 +1,26 @@
 {
-  "name": "ccli",
-  "version": "1.0.0",
+  "name": "lcli",
+  "version": "0.0.1",
   "description": "A custom CLI tool with different functionalities and utilities.",
   "bin": {
-    "ccli": "bin/src/cli.js"
+    "lcli": "bin/src/cli.js"
   },
   "main": "bin/src/cli.js",
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "package": "pkg . --output ccli",
     "prepublishOnly": "node prepublish.js && tsc",
     "release": "cross-env RELEASE_MODE=true np --no-tests"
+  },
+  "repository": {
+    "type": "git+ssh",
+    "url": "https://github.com/agusmag/ccli"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "cli",

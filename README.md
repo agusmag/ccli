@@ -1,4 +1,4 @@
-# CCLI
+# LCLI (Local CLI)
 
 ## Table of Contents
 - [Goal](#goal)
@@ -69,7 +69,7 @@ Custom CLI tool to help the user with different scenarios. It works as utility t
 
 ```bash
 # Convert PST Time to ART time
-ccli ctime convert -f 'PST' -t 'ART' 
+lcli ctime convert -f 'PST' -t 'ART' 
 
 # Output using current time
 ┌─────────────────────────┬─────────────────────────┐
@@ -81,7 +81,7 @@ ccli ctime convert -f 'PST' -t 'ART'
 └─────────────────────────┴─────────────────────────┘
 
 
-ccli ct cv -f 'PST' -t 'ART' --specific '12:00'
+lcli ct cv -f 'PST' -t 'ART' --specific '12:00'
 
 # Output
 ┌─────────────────────────┬─────────────────────────┐
@@ -97,7 +97,7 @@ ccli ct cv -f 'PST' -t 'ART' --specific '12:00'
 
 ```bash
 # List supported languages
-ccli trans list 
+lcli trans list 
 
 # Output
 ┌─────────────────────────┬─────────────────────────┐
@@ -123,7 +123,7 @@ ccli trans list
 
 ```bash
 # Translate phrase between languages
-ccli trans translate -f 'es' -t 'ko' -d 'Hola' 
+lcli trans translate -f 'es' -t 'ko' -d 'Hola' 
 
 # Output
 안녕하세요
@@ -133,7 +133,7 @@ ccli trans translate -f 'es' -t 'ko' -d 'Hola'
 
 ```bash
 # List all the conversion rates
-ccli usd list
+lcli usd list
 
 ┌─────────────────────────┬────────────────────┬────────────────────┬─────────────────────────┐
 │ Currency                │ Buy Conversion ra… │ Sell Conversion r… │ Last update             │
@@ -160,9 +160,9 @@ usd get 'blue' # usd g <usdType>
 ## Installation
 
 ```bash
-npm i ccli
+npm i lcli
 
-ccli --help
+lcli --help
 ```
 
 ## Contributing
